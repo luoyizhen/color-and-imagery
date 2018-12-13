@@ -1,0 +1,43 @@
+{
+"nodes":[
+    {"name":"李白"},
+    {"name":"白居易"},
+    {"name":"青山"},
+    {"name":"丹青"},
+    {"name":"白日"},
+    {"name":"白首"},
+    {"name":"青天"},
+    {"name":"白玉"},
+    {"name":"翡翠"},
+    {"name":"白雪"},
+    {"name":"丹砂"},
+    {"name":"青春"},
+    {"name":"赤松"},
+    {"name":"韩淲"}
+],
+"links":[
+      {"source": "白居易", "target": "青山", "value": 2}, 
+      {"source": "白居易", "target": "丹青", "value": 2}, 
+      {"source": "白居易", "target": "白日", "value": 2}, 
+      {"source": "白居易", "target": "白首", "value": 2}, 
+      {"source": "白居易", "target": "青天", "value": 2}, 
+      {"source": "白居易", "target": "白玉", "value": 2}, 
+      {"source": "白居易", "target": "翡翠", "value": 2}, 
+      {"source": "白居易", "target": "白雪", "value": 2}, 
+      {"source": "白居易", "target": "丹砂", "value": 2},
+      {"source": "李白", "target": "青山", "value": 2}, 
+      {"source": "李白", "target": "丹青", "value": 2}, 
+      {"source": "李白", "target": "白日", "value": 2}, 
+      {"source": "李白", "target": "白首", "value": 2}, 
+      {"source": "李白", "target": "青天", "value": 2}, 
+      {"source": "李白", "target": "白玉", "value": 2}, 
+      {"source": "李白", "target": "青春", "value": 2}, 
+      {"source": "李白", "target": "翡翠", "value": 2}, 
+      {"source": "李白", "target": "白雪", "value": 2}, 
+      {"source": "李白", "target": "丹砂", "value": 2}, 
+      {"source": "李白", "target": "赤松", "value": 2},
+      {"source": "青山", "target": "韩淲", "value": 2}, 
+      {"source": "青春", "target": "韩淲", "value": 2}, 
+      {"source": "翡翠", "target": "韩淲", "value": 2}
+
+]}

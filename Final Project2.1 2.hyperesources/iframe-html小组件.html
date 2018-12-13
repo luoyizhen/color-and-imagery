@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.links line {
+  stroke:black;
+  stroke-opacity: 0.1;
+}
+
+.nodes circle {
+  /* stroke: #fff;
+  stroke-width: 1px; */
+}
+
+text {
+  font-family: sans-serif;
+  font-size: 10px;
+}
+@font-face {
+font-family: Songti;
+src: url("hkstW5(P).woff");
+}
+@font-face {
+font-family: SongtiBold;
+src: url("hkbtsW9(P).woff");
+}
+.tooltip {
+        position: absolute;
+        height: 300px;
+        width: 300px;
+        pointer-events: none;
+        text-align: left;
+        font-size: 15px;
+        color: black;
+        
+    }
+
+.temporary {
+        position: absolute;
+        height: 10px;
+        width: 10px;
+        pointer-events: none;
+        text-align: left;
+        color: black;
+        opacity: 0;
+        background-color: white;
+        
+    }
+</style>
+<script type="text/javascript" language="javascript" src="data_new.json"></script>
+
+
+<svg width="960" height="600"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+var simulation = d3.forceSimulation()
+    .force("link", d3.forceLink().id(function(d) { return d.id; }).strength(0.02))
+    .force("charge", d3.forceManyBody())
+    .force("center", d3.forceCenter(width / 2, height / 2));
+
+var tooltip = d3.select("body").append("div")
+                        .attr("class", "tooltip")
+                        .style("opacity", 0);
+var imagelist = {
+ "元稹":"元稹.png", 
+ "刘克庄":"刘克庄.png",
+ "刘禹锡":"刘禹锡.png",
+ "李白":"李白.png",
+ "杜甫":"杜甫.png",
+ "杨万里":"杨万里.png",
+ "梅尧臣":"梅尧臣.png",
+ "白居易":"白居易.png",
+ "苏轼":"苏轼.png",
+ "陆游":"陆游.png",
+ "陆龟蒙":"陆龟蒙.png",
+ "刘长卿":"刘长卿.png",
+ "李商隐":"李商隐.png",
+ "贯休":"贯休.png",
+ "齐己":"齐己.png",
+ "方回":"方回.png",
+ "张耒":"张耒.png",
+ "黄庭坚":"黄庭坚.png",
+ "白玉蟾":"白玉蟾.png",
+ "郭祥正":"郭祥正.png",
+ }
+
+d3.json("data_new.json", function(error, graph) {
+  if (error) throw error;
+
+  var link = svg.append("g")
+    .attr("class", "links")
+    .selectAll("line")
+    .data(graph.links)
+    .enter().append("line")
+    .attr("stroke-width", function(d) { return Math.sqrt(d.value)/1.5; });
+
+  var node = svg.append("g")
+    .attr("class", "nodes")
+    .selectAll("g")
+    .data(graph.nodes)
+    .enter().append("g")
+
+  var defs = node.filter(function(d){return d.group ==  1})
+                 .append("defs")
+                 .append("pattern")
+                 .attr("id", function (d, i) { return "author" + i })
+                 .attr("patternUnits", "objectBoundingBox")
+                 .attr("width", 1)
+                 .attr("height", 1)
+                 .append("image")
+                 .attr("id", function (d, i) { return "image" + i; } )
+                 .attr("xlink:href", function(d){return imagelist[d.id]})
+  var Bgimag = defs.attr("width", 36)
+                 .attr("height", 36)
+                 
+    
+  var circles = node.append("circle")
+      .attr("r", function(d){
+        if (d.group ==1) {
+          return 18
+        } else{
+          return 4
+        }
+      })
+
+  circles.filter(function(d){return d.group ==  1})
+      .attr("fill", function(d, i){
+          return "url(#author" + i + ")"
+        })
+
+  circles.filter(function(d){return d.group !=  1})
+  .attr("fill", function(d){
+        if (d.group ==2) {
+          return "red"
+        }
+        if (d.group ==3) {
+          return "green"
+        }
+        if (d.group ==4) {
+          return "white"
+        }
+        if (d.group ==5) {
+          return "gray"
+        } })
+  
+  circles.attr("stroke", function(d){
+        if (d.group ==4) {
+          return "gray"
+        }else{
+          return "white"
+        }})
+      .call(d3.drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended));
+
+  // var lables = node.append("text")
+  //     .text(function(d) {
+  //       return d.id;
+  //     })
+  //     .attr('x', 6)
+  //     .attr('y', 3);
+
+  node.append("title")
+      .text(function(d) { return d.id; });
+
+  simulation
+      .nodes(graph.nodes)
+      .on("tick", ticked);
+
+  simulation.force("link")
+      .links(graph.links);
+
+  function ticked() {
+    link
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    circles
+        .attr('cx', function(d) { return d.x; })
+    .attr('cy', function(d) { return d.y; })}
+
+  node.selectAll("circle")
+      .on("mouseover", function(d){
+        var thisNodeName = d.id
+        d3.select(this).transition().duration(200).attr("stroke-width", function(d){
+          if (d.group == 1){return 3} else {return 1}
+        })
+        // Bgimag.transition().duration(200).attr("width", function(d){
+        //   if (d.id == thisNodeName){return 40} else {return 30}
+        // })
+              .transition().duration(200).attr("height", function(d){
+          if (d.id == thisNodeName){return 40} else {return 30}
+        })
+        
+        if (d.group == 1){
+          var dynasty = ''
+          if (d.dynasty == 'tang'){
+             dynasy = "唐·"
+            //  console.log("haha")
+          }
+          if (d.dynasty == 'song'){
+             dynasy = "宋·"
+            //  console.log("hahad")
+          }
+          tooltip.html(dynasy+d.id+"</br>"+"四色意象共提及"+"</br>" + d.mention + "次")
+                .style("font-family", "SongtiBold")
+                .style("font-size", "30")
+                .style("left", (d3.event.pageX+30) + "px")
+                .style("top", (d3.event.pageY -10) + "px")  
+                .transition().duration(1000).style("opacity", 1)
+          
+        }else{
+        
+        tooltip.html(d.id+"</br>"+"唐宋共提及"+d.mentioned+"次")
+                .style("font-family", "SongtiBold")
+                .style("font-size", "50")
+                .style("left", (d3.event.pageX+30) + "px")
+                .style("top", (d3.event.pageY -10) + "px")  
+                .transition().duration(1000).style("opacity", 1)}
+        
+      var NodeTheOtherSide = []
+      link.transition().duration(700).style("stroke-opacity", function(d){   
+          if (d.source.id == thisNodeName) {
+            NodeTheOtherSide.push(d.target.id)
+            return 0.8} 
+          if (d.target.id == thisNodeName) {
+            NodeTheOtherSide.push(d.source.id)
+            return 0.8}
+          else{
+            return 0.01}})
+      // console.log(NodeTheOtherSide)
+     
+      node.transition().duration(700).style("opacity", function(d){ if (NodeTheOtherSide.indexOf(d.id)>=0 || d.id == thisNodeName) {
+            return 1} return 0.1})
+      //  var htmlTargetNodes = node.filter(function(d){return NodeTheOtherSide.indexOf(d.id)>=0 })         
+      //  console.log(NodeTheOtherSide)
+      //  console.log(NodeTheOtherSide.indexOf("刘克庄"))
+        var temporaryTip = d3.select("body")
+          .data(graph.nodes)
+          .enter()
+          .append("div")
+          .attr("class", "temporary")
+          .html(function(d){if(NodeTheOtherSide.indexOf(d.id)>=0){return d.id}})
+          .style("left", function(d){ return d.x+25+"px"})
+          .style("top", function(d){return d.y+"px"})
+          .style("font-family", "SongtiBold")
+          .style("font-size", "12px")
+          .transition().duration(700)
+          .style("background-color","transparent")
+          .style("opacity", 0.8)
+
+        })
+      .on("mouseout", function(d) {
+        var thisNodeName = d.id
+
+        d3.select(this).transition().duration(200).attr("stroke-width", function(d){
+          if (d.group == 1){return 1} else {return 1}
+        })
+
+        tooltip.transition().duration(1000).style("opacity", 0)
+        link.transition().duration(700).style("stroke-opacity", 0.1)
+        node.transition().duration(700).style("opacity",1)
+        // temporaryTip.html(function(d){return ""})
+        d3.selectAll(".temporary").transition().duration(700).style("opacity", 0).remove()
+        // d3.selectAll(".temporary")
+});
+})
+
+function dragstarted(d) {
+  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+}
+
+function dragged(d) {
+  d.fx = d3.event.x;
+  d.fy = d3.event.y;
+}
+
+function dragended(d) {
+  if (!d3.event.active) simulation.alphaTarget(0);
+  d.fx = null;
+  d.fy = null;
+}
+
+
+
+</script>

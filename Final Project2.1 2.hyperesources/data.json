@@ -1,0 +1,42 @@
+{
+   "nodes":[
+      {"name":"李白", "id": "tang"},
+      {"name":"白居易", "id": "tang"},
+      {"name":"杜甫", "id": "tang"},
+      {"name":"刘长卿", "id": "tang"},
+      {"name":"孟郊", "id": "tang"},
+      {"name":"许浑", "id": "tang"},
+      {"name":"韦应物", "id": "tang"},
+      {"name":"李商隐", "id": "tang"},
+      {"name":"齐己", "id": "tang"},
+      {"name":"吕岩", "id": "tang"},
+      {"name":"陆游", "id": "song"},
+      {"name":"杨万里", "id": "song"},
+      {"name":"苏轼", "id": "song"},
+      {"name":"白玉蟾", "id": "song"},
+      {"name":"韩淲", "id": "song"},
+      {"name":"郭祥正", "id": "song"},
+      {"name":"周紫芝", "id": "song"},     
+      {"name":"苏辙", "id": "song"},
+      {"name":"张耒", "id": "song"},
+      {"name":"黄庭坚", "id":"song"},
+      {"name": "青山", "id": "yixiang", "mentioned": 3576}, 
+      {"name": "丹青", "id": "yixiang", "mentioned": 2404}, 
+      {"name": "白日", "id": "yixiang", "mentioned": 2034}, 
+      {"name": "白首", "id": "yixiang", "mentioned": 2621}, 
+      {"name": "青天", "id": "yixiang", "mentioned": 1084}, 
+      {"name": "白玉", "id": "yixiang", "mentioned": 1053}, 
+      {"name": "青春", "id": "yixiang", "mentioned": 977}, 
+      {"name": "翠微", "id": "yixiang", "mentioned": 953}, 
+      {"name": "翡翠", "id": "yixiang", "mentioned": 880}, 
+      {"name": "白雪", "id": "yixiang", "mentioned": 848}, 
+      {"name": "翰墨", "id": "yixiang", "mentioned": 732}, 
+      {"name": "丹砂", "id": "yixiang", "mentioned": 553}, 
+      {"name": "赤松", "id": "yixiang", "mentioned": 360}
+   ],
+   "links":[
+{"source": "韦应物", "target": "青山", "value": 19}, {"source": "白居易", "target": "青山", "value": 23}, {"source": "白居易", "target": "丹青", "value": 12}, {"source": "白居易", "target": "白日", "value": 51}, {"source": "白居易", "target": "白首", "value": 23}, {"source": "白居易", "target": "青天", "value": 11}, {"source": "白居易", "target": "白玉", "value": 14}, {"source": "白居易", "target": "翡翠", "value": 9}, {"source": "白居易", "target": "白雪", "value": 18}, {"source": "白居易", "target": "丹砂", "value": 12}, {"source": "许浑", "target": "青山", "value": 23}, {"source": "李白", "target": "青山", "value": 24}, {"source": "李白", "target": "丹青", "value": 7}, {"source": "李白", "target": "白日", "value": 55}, {"source": "李白", "target": "白首", "value": 13}, {"source": "李白", "target": "青天", "value": 54}, {"source": "李白", "target": "白玉", "value": 26}, {"source": "李白", "target": "青春", "value": 9}, {"source": "李白", "target": "翡翠", "value": 7}, {"source": "李白", "target": "白雪", "value": 19}, {"source": "李白", "target": "丹砂", "value": 12}, {"source": "李白", "target": "赤松", "value": 4}, {"source": "刘长卿", "target": "青山", "value": 37}, {"source": "刘长卿", "target": "白首", "value": 26}, {"source": "刘长卿", "target": "青春", "value": 8}, {"source": "刘长卿", "target": "翠微", "value": 7}, {"source": "杜甫", "target": "丹青", "value": 18}, {"source": "杜甫", "target": "白日", "value": 25}, {"source": "杜甫", "target": "白首", "value": 22}, {"source": "杜甫", "target": "青天", "value": 6}, {"source": "杜甫", "target": "白玉", "value": 5}, {"source": "杜甫", "target": "青春", "value": 14}, {"source": "杜甫", "target": "翠微", "value": 8}, {"source": "杜甫", "target": "翡翠", "value": 8}, {"source": "杜甫", "target": "白雪", "value": 12}, {"source": "杜甫", "target": "翰墨", "value": 3}, {"source": "杜甫", "target": "丹砂", "value": 12}, {"source": "齐己", "target": "白日", "value": 14}, {"source": "齐己", "target": "赤松", "value": 2}, {"source": "孟郊", "target": "白日", "value": 18}, {"source": "孟郊", "target": "青春", "value": 9}, {"source": "李商隐", "target": "白玉", "value": 8}, {"source": "李商隐", "target": "翡翠", "value": 9}, {"source": "吕岩", "target": "白雪", "value": 4}, {"source": "吕岩", "target": "丹砂", "value": 10},
+{"source": "青山", "target": "韩淲", "value": 43}, {"source": "青春", "target": "韩淲", "value": 26}, {"source": "翡翠", "target": "韩淲", "value": 8}, {"source": "青山", "target": "杨万里", "value": 44}, {"source": "青天", "target": "杨万里", "value": 46}, {"source": "白玉", "target": "杨万里", "value": 17}, {"source": "翡翠", "target": "杨万里", "value": 20}, {"source": "白雪", "target": "杨万里", "value": 12}, {"source": "青山", "target": "苏轼", "value": 51}, {"source": "丹青", "target": "苏轼", "value": 21}, {"source": "白首", "target": "苏轼", "value": 28}, {"source": "丹砂", "target": "苏轼", "value": 14}, {"source": "青山", "target": "陆游", "value": 65}, {"source": "丹青", "target": "陆游", "value": 25}, {"source": "白日", "target": "陆游", "value": 35}, {"source": "白首", "target": "陆游", "value": 106}, {"source": "青天", "target": "陆游", "value": 35}, {"source": "白玉", "target": "陆游", "value": 30}, {"source": "丹砂", "target": "陆游", "value": 17}, {"source": "丹青", "target": "郭祥正", "value": 26}, {"source": "白日", "target": "郭祥正", "value": 26}, {"source": "青春", "target": "郭祥正", "value": 18}, {"source": "白日", "target": "张耒", "value": 30}, {"source": "青春", "target": "张耒", "value": 25}, {"source": "白雪", "target": "白玉蟾", "value": 17}, {"source": "青山", "target": "白玉蟾", "value": 33}, {"source": "翠微", "target": "白玉蟾", "value": 10}, {"source": "翡翠", "target": "白玉蟾", "value": 6}, {"source": "丹砂", "target": "白玉蟾", "value": 8}, {"source": "白玉", "target": "周紫芝", "value": 22}, {"source": "青春", "target": "周紫芝", "value": 17}, {"source": "白雪", "target": "周紫芝", "value": 17}, {"source": "翰墨", "target": "黄庭坚", "value": 32}, {"source": "丹砂", "target": "苏辙", "value": 19}, {"source": "赤松", "target": "苏辙", "value": 8}
+
+   ]}
+   
